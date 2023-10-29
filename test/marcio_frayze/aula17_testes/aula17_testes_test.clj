@@ -14,9 +14,10 @@
 
 ;;O "testing" não é obrigatório, mas ele definirá o que estamos testando.
 
-;;O '(is)" é uma asserção. Ele vai verificar se o valor "15" será igual ao valor da função "taxa-entrega" quando passarmos o valor "1".
+;;O '(is)" é uma asserção. Ele vai verificar se o valor "15" será igual ao valor da função
+;;"taxa-entrega" quando passarmos o valor "1".
 
-(deftest nao-sei-test
+(deftest taxa-de-entrega-test
   (testing "Dado um valor abaixo de 100 reais, então a taxa de entrega deve ser de 15 reais."
     (is (= 15 (taxa-de-entrega 1)))
     (is (= 15 (taxa-de-entrega 100))))
