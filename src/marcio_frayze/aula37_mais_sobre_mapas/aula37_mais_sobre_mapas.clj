@@ -56,4 +56,20 @@
 ;;Essa função soma "1" ao valor passado por parãmetro.
 (inc 39)
 
-(update {:nome "Rafa" :idade "100"} :idade inc)
+;;O primeiro parâmetro dessa função é o mapa que queremos atualizar, o segundo
+;;parâmetro é a chave que queremos atualizar, e o terceiro parâmetro é a função
+;;que queremos aplicar ao valor da chave.
+
+;;No exemplo abaixo, aplicaremos a função "inc" na chave "idade".
+(update {:nome "Rafa" :idade 100} :idade inc)
+
+;;O "update" não servirá para atualizarmos o valor de um mapa que está dentro
+;;de um mapa.
+
+;;Quando temos um mapa de um mapa, deveremos utilizar a função
+;;"update-in".
+
+;;O primeiro argumento é o mapa que queremos atualizar, o segundo argumento é
+;;um vetor contendo as chaves que queremos adentrar e o terceiro parâmetro é a
+;;função que queremos aplicar ao valor da chave.
+(update-in (compras) [:tomate :preco] inc)
