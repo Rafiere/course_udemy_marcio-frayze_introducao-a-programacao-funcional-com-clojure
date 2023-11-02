@@ -24,7 +24,26 @@
    {:nome "Estrutura de Dados" :semestre 2}
    {:nome "Inteligência Artificial" :semestre 3}])
 
-;;Resolvendo o problema sem threading
+
+;;Aula 02
+
+;;Para iterarmos em uma lista de mapas, ou seja, um vetor de mapas,
+;;A função ":nome" pegará o valor de todas as chaves "nome" de todos os mapas, que estão
+;;no array de disciplinas.
+(defn retirar-apenas-o-nome-de-uma-disciplina-em-um-mapa
+  [disciplinas]
+  (map :nome disciplinas))
+
+(defn transformar-em-maiusculo
+  [nomes-das-disciplinas]
+  (map clojure.string/upper-case nomes-das-disciplinas))
+
+
+;;A função "join" serve para juntarmos uma lista com vários elementos, por exemplo:
+
+(defn juntar-nomes-em-uma-unica-string-separada-por-virgula
+  [nomes-das-disciplinas]
+  (clojure.string/join ", " nomes-das-disciplinas))
 
 ;;No exemplo abaixo, estamos filtrando a estrutura de dados "disciplinas", que é
 ;;um vetor de mapas. Estamos passando como parâmetro para o "filter" uma função
@@ -35,6 +54,10 @@
 ;;false e descartaremos o mapa.
 (defn nomes-disciplinas-restantes
   [disciplinas semestre-atual]
-  (filter #(>= (:semestre %) semestre-atual)  disciplinas))
+  (juntar-nomes-em-uma-unica-string-separada-por-virgula
+    (transformar-em-maiusculo
+      (retirar-apenas-o-nome-de-uma-disciplina-em-um-mapa (filter #(>= (:semestre %) semestre-atual) disciplinas)))))
+
+(nomes-disciplinas-restantes (disciplinas) 2)
 
 ;;Resolvendo o problema com threading
