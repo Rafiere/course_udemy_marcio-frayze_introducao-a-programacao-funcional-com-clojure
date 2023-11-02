@@ -60,4 +60,14 @@
 
 (nomes-disciplinas-restantes (disciplinas) 2)
 
-;;Resolvendo o problema com threading
+;;Resolvendo o problema com threading-last:
+
+(defn nomes-disciplinas-restantes
+  [disciplinas semestre-atual]
+  (->> disciplinas
+       (filter #(>= (:semestre %) semestre-atual))
+       (map :nome)
+       (map clojure.string/upper-case)
+       (clojure.string/join ", ")))
+
+(nomes-disciplinas-restantes (disciplinas) 2)
